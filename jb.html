@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ku" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7AMAGAMING - Jailbreak & Host</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background-color: #080b10;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            background: radial-gradient(circle at center, #111927 0%, #080b10 100%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            background: rgba(16, 24, 39, 0.85);
+            border: 1px solid rgba(0, 162, 255, 0.25);
+            border-radius: 24px;
+            padding: 35px 25px;
+            box-shadow: 0 0 35px rgba(0, 162, 255, 0.15);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo-wrapper {
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .logo-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #00a2ff;
+            box-shadow: 0 0 25px rgba(0, 162, 255, 0.5);
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            text-shadow: 0 0 12px rgba(0, 162, 255, 0.6);
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #00a2ff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .status-box {
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(0, 162, 255, 0.2);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+
+        .status-box span {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .section-title {
+            font-size: 13px;
+            color: #64748b;
+            text-align: left;
+            margin: 15px 0 10px 5px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+            border: 1px solid rgba(0, 162, 255, 0.35);
+            color: #e2e8f0;
+            padding: 15px 20px;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #005f9e 0%, #00a2ff 100%);
+            color: #ffffff;
+            border-color: #00a2ff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 162, 255, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn .badge {
+            background: rgba(0, 162, 255, 0.2);
+            color: #00a2ff;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .btn:hover .badge {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #475569;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-wrapper">
+            <img src="logo.png" alt="7AMAGAMING Logo" class="logo-img">
+        </div>
+        
+        <h1>7AMAGAMING</h1>
+        <div class="subtitle">Quality and Warranty</div>
+
+        <div class="status-box">
+            Status: <span id="status">Ready...</span>
+        </div>
+
+        <div class="section-title">PS4 Host & Payloads</div>
+        <div class="btn-grid">
+            <button class="btn" onclick="loadPayload('GoldHEN v2.4b16')">
+                <span>GoldHEN v2.4b16</span>
+                <span class="badge">9.00 / 11.00</span>
+            </button>
+            <button class="btn" onclick="loadPayload('PS4 HEN')">
+                <span>PS4 HEN</span>
+                <span class="badge">Payload</span>
+            </button>
+            <button class="btn" onclick="loadPayload('App2USB')">
+                <span>App2USB</span>
+                <span class="badge">Tool</span>
+            </button>
+            <button class="btn" onclick="loadPayload('Disable Updates')">
+                <span>Disable Updates</span>
+                <span class="badge">System</span>
+            </button>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 <strong>7AMAGAMING</strong> - Dahuk</p>
+        </div>
+    </div>
+
+    <script>
+        function loadPayload(name) {
+            document.getElementById('status').innerText = 'Loading ' + name + '...';
+            document.getElementById('status').style.color = '#00a2ff';
+            
+            setTimeout(() => {
+                document.getElementById('status').innerText = name + ' Loaded Successfully!';
+                document.getElementById('status').style.color = '#00ff88';
+            }, 1200);
+        }
+    </script>
+
+</body>
+</html>
